@@ -9,48 +9,50 @@ import SwiftUI
 
 //@main
 struct ContentView: View {
-    @AppStorage("counterr") private var counter = 0 // Persistent storage for the counter
-    
+    @AppStorage("counterOne") private var counterOne = 0
+    @AppStorage("counterTwo") private var counterTwo = 0
 
     var body: some View {
         HStack {
-            VStack {
-                Button(action: { counter += 1 }) {
+            VStack(spacing:5) {
+                Button(action: { counterOne += 1 }) {
                     Image(systemName: "plus")
-                        .scaleEffect(1.5)
+                        .scaleEffect(1)
                         .foregroundColor(.green)
                 }
-                Text("\(counter)")
-                    .font(.system(size: 72, design: .rounded))
-                    .padding()
-
-                HStack {
-                    Button(action: { counter -= 1 }) {
-                        Image(systemName: "minus")
-                            .scaleEffect(1.5)
-                            .foregroundColor(.red)
-                    }
-                }
-                .padding()
-            }
-            VStack {
                 // Display the counter value
-                Text("\(counter)")
-                    .font(.system(size: 72, design: .rounded))
-                    .padding()
-
-                HStack {
-
-                    // Increment button
-                    Button(action: { counter += 1 }) {
-                        Image(systemName: "plus")
-                            .scaleEffect(1.5)
-                            .foregroundColor(.green)
-                    }
+                Text("\(counterOne)")
+                    .font(.system(size: 50, design: .rounded))
+                // Decrement Counter
+                Button(action: { counterOne -= 1 }) {
+                    Image(systemName: "minus")
+                        .scaleEffect(1)
+                        .foregroundColor(.red)
                 }
-                .padding()
+                
             }
+            .padding(.top, 20)
+            
+            VStack(spacing:5) {
+                Button(action: { counterTwo += 1 }) {
+                    Image(systemName: "plus")
+                        .scaleEffect(1)
+                        .foregroundColor(.green)
+                }
+                // Display the counter value
+                Text("\(counterTwo)")
+                    .font(.system(size: 50, design: .rounded))
+                // Decrement Counter
+                Button(action: { counterTwo -= 1 }) {
+                    Image(systemName: "minus")
+                        .scaleEffect(1)
+                        .foregroundColor(.red)
+                }
+                
+            }
+            .padding(.top, 20)
         }
+        .padding()
             
     }
 
