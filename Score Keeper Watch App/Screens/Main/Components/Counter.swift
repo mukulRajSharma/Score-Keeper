@@ -11,21 +11,22 @@ struct Counter: View {
     @Binding var counter: Int
     let minValue: Int
     let maxValue: Int
+    var increment: Int
     
     var body: some View {
         VStack (spacing:25) {
-            Button(action: { counter += 1 }) {
+            Button(action: { counter += increment }) {
                 Image(systemName: "plus")
                     .scaleEffect(1)
                     .foregroundColor(.green)
             }
             .disabled(counter == maxValue)
             .frame(width: 75, height: 5)
-            // Display the counter value
+
             Text("\(counter)")
                 .font(.system(size: 30, design: .rounded))
-            // Decrement Counter
-            Button(action: { counter -= 1 }) {
+
+            Button(action: { counter -= increment }) {
                 Image(systemName: "minus")
                     .scaleEffect(1)
                     .foregroundColor(.red)
